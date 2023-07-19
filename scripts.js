@@ -135,7 +135,7 @@ console.log(products)
 const userName = 'Matheus'
 const age = 30
 console.log(`O nome do usuário é: ${userName} e ele tem ${age} anos.`)
-console.log("O nome do usuário é: " + userName + "e ele tem " + age + " anos.")
+console.log("O nome do usuário é: " + userName + " e ele tem " + age + " anos.")
 
 //aula 6 - destructuring
 const fruits = ["Maçã", "Laranja", "Mamão"]
@@ -171,3 +171,23 @@ const otherInfos = { km: 100000, price: 49000 }
 
 const car = { ...carName, ...carBrand, ...otherInfos, wheels: 4 }
 console.log(car)
+
+//aula 8 - classes
+class Product {
+    constructor(name, price) {
+        this.name = name
+        this.price = price
+    }
+
+    productWithDiscount(discount) {
+        return this.price * ((100 - discount) / 100)//condição de desconto - subtrai desconto por cem, múltiplica pelo preço e divide por cem
+    }
+}
+
+const shirt = new Product("Camila gola v", 20)
+console.log(shirt.name)
+console.log(shirt.productWithDiscount(10))
+console.log(shirt.productWithDiscount(50))
+
+const tenis = new Product("Tênis verde", 120)
+console.log(tenis.productWithDiscount(20))
