@@ -1,3 +1,4 @@
+/*
 //aula 1 - var, let e const
 var x = 10
 var y = 15
@@ -84,10 +85,10 @@ const user = {
         }, 700)
     }
 }
-/*
-user.sayUserName()
-user.sayUserNameArrow()//com a arrow function this é o elemento pai de fato
-*/
+
+//user.sayUserName()
+//user.sayUserNameArrow()//com a arrow function this é o elemento pai de fato
+
 
 //aula 3 - filter
 const arr = [1, 2, 3, 4, 5]
@@ -113,3 +114,19 @@ const notAvailableUsers = users.filter((user) => !user.available)
 
 console.log(availableUsers)
 console.log(notAvailableUsers)
+
+*/
+//aula 4 - map
+const products = [
+    { name: "Camisa", price: 10.99, category: "Roupas" },
+    { name: "Chaleira elétrica", price: 49.99, category: "Eletro" },
+    { name: "Fogão", price: 400, category: "Eletro" },
+    { name: "Calça jeans", price: 50.99, category: "Roupas" },
+]
+
+products.map((product) => {
+    if (product.category === "Roupas") {
+        product.onSale = true
+    }
+})
+console.log(products)
