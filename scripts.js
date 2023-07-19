@@ -191,3 +191,23 @@ console.log(shirt.productWithDiscount(50))
 
 const tenis = new Product("Tênis verde", 120)
 console.log(tenis.productWithDiscount(20))
+
+//aula 9 - herança
+class productWithAttributes extends Product {//herdando da classe(Product)
+    constructor(name, price, colors) {
+        super(name, price)//resgatando variáveis da classe acima
+        this.colors = colors//novo atributo
+    }
+
+    showColors() {
+        console.log("As cores são: ")
+        this.colors.forEach((color) => {//executa função para cada elemento do array
+            console.log(color)
+        });
+    }
+}
+
+const hat = new productWithAttributes("Chapéu", 29.99, ["Preto", "Azul", "Verde"])
+console.log(hat.name)
+console.log(hat.productWithDiscount(30))
+hat.showColors()
