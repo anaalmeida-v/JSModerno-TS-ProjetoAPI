@@ -1,8 +1,6 @@
 // 3 - component
 import React from 'react'
 
-type Props = {}
-
 const FirstComponent = () => {
   return (
     <div>
