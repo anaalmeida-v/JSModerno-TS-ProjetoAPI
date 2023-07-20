@@ -9,6 +9,9 @@ import styles from "./App.module.css";
 import TaskForm from "./components/TaskForm";
 import TaskList from "./components/TaskList";
 
+//interface
+import { ITask } from "./interfaces/Task";
+
 function App() {
   return (
     <div>
@@ -19,7 +22,7 @@ function App() {
           <TaskForm btnText="Criar tarefa" />
         </div>
         <div>
-          <h2>Ssuas tarefas:</h2>
+          <h2>Suas tarefas:</h2>
           <TaskList />
         </div>
       </main>
