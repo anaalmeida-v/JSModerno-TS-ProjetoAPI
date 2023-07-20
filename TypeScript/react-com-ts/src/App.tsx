@@ -5,6 +5,9 @@ import FirstComponent from "./components/FirstComponent";
 import SecondComponent from "./components/SecondComponent";
 import Descructuring from "./components/Descructuring";
 
+//6 - useState
+import State from "./components/State";
+
 function App() {
   //1 - variáveis
   const name: string = "Matheus";
@@ -38,6 +41,7 @@ function App() {
         commentsQty={5}
         tags={["phyton"]}
       />
+      <State/>
     </div>
   );
 }
