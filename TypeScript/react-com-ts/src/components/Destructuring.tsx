@@ -5,9 +5,24 @@ type Props = {
   content: string;
   commentsQty: number;
   tags: string[];
+
+  //8 - enum
+  category: Category;
 };
 
-const Descructuring = ({ title, content, commentsQty, tags }: Props) => {
+export enum Category {
+  JS = "JavaScript",
+  TS = "TypeScript",
+  P = "Phyton",
+}
+
+const Destructuring = ({
+  title,
+  content,
+  commentsQty,
+  tags,
+  category,
+}: Props) => {
   //ação de desctructuring: {<nomevar>}: type(Props)
   return (
     <div>
@@ -19,8 +34,9 @@ const Descructuring = ({ title, content, commentsQty, tags }: Props) => {
           <span>#{tag}</span>
         ))}
       </div>
+      <h4>Categoria: {category}</h4>
     </div>
   );
 };
 
-export default Descructuring;
+export default Destructuring;

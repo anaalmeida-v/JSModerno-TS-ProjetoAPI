@@ -3,7 +3,7 @@ import FirstComponent from "./components/FirstComponent";
 
 //5 - destruturando props
 import SecondComponent from "./components/SecondComponent";
-import Descructuring from "./components/Descructuring";
+import Destructuring, { Category } from "./components/Destructuring";
 
 //6 - useState
 import State from "./components/State";
@@ -29,19 +29,15 @@ function App() {
       {/* se eu tentar colocar o age por exemplo, a variável será recusada, por ser um number e não uma string */}
       <FirstComponent />
       <SecondComponent name="Segundo" />
-      <Descructuring
+      <Destructuring
         title="Primeiro post"
         content="Algum conteúdo"
         commentsQty={10}
         tags={["ts", "js"]}
+        category={Category.TS}
       />
-      <Descructuring
-        title="Primeiro post"
-        content="outro conteúdo"
-        commentsQty={5}
-        tags={["phyton"]}
-      />
-      <State/>
+       
+      <State />
     </div>
   );
 }
