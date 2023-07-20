@@ -6,14 +6,29 @@ import { ITask } from "../interfaces/Task";
 
 type Props = {
   btnText: string;
+  taskList: ITask[]; //chamando lista
+  setTaskList?: React.Dispatch<React.SetStateAction<ITask[]>>; //dispachando um evento(setState) que trabalha com ITask//?-pode ou não vir(opcional)
 };
 
-const TaskForm = ({ btnText }: Props) => {
+const TaskForm = ({ btnText, taskList, setTaskList }: Props) => {
   const [id, setId] = useState<number>(0); //tipo:number - começa como '0'
   const [title, setTitle] = useState<string>(""); //tipo:string - começa vazio
   const [difficulty, setDifficulty] = useState<number>(0); //dificuldade da tarefa
 
-  const addTaskHandler = () => {}; //realiza ação de inclusão de tarefas
+  const addTaskHandler = (e: FormEvent<HTMLFormElement>) => {
+    //realiza ação de inclusão de tarefas - envio de submissão do formulário
+    e.preventDefault();
+
+    const id = Math.floor(Math.random() * 1000); //id aleatório para ser possível se referir facilmente a tarefa a ser incluída ou deletada
+    const newTask: ITask = { id, title, difficulty }; //nova tarefa a ser adicionada
+    setTaskList!([...taskList, newTask]); //adiciona tudo que tem na taskList e as novas tasks e junta tudo em um array
+
+    //limpando formulário após envio dos dados da tarefa
+    setTitle("");
+    setDifficulty(0);
+
+    console.log(taskList);
+  };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     //tipando event como elemento html
@@ -36,6 +51,7 @@ const TaskForm = ({ btnText }: Props) => {
           name="title"
           placeholder="Título da tarefa"
           onChange={handleChange} //quando há mudança no elemento, evento é disparado
+          value={title}
         />
       </div>
       <div className={styles.input_container}>
@@ -44,6 +60,8 @@ const TaskForm = ({ btnText }: Props) => {
           type="text"
           name="difficulty"
           placeholder="Dificuldade da tarefa"
+          onChange={handleChange} //quando há mudança no elemento, evento é disparado
+          value={difficulty}
         />
       </div>
       <input type="submit" value={btnText} onChange={handleChange} />
