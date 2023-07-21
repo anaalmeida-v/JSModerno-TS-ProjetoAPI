@@ -1,11 +1,29 @@
-import React from 'react'
+import React from "react";
 
-type Props = {}
+//interfaces
+import { ITask } from "../interfaces/Task";
 
-const TaskList = (props: Props) => {
+//css
+import styles from "./TaskList.module.css";
+
+type Props = {
+  taskList: ITask[];//a taskList é um array de ITask
+};
+
+const TaskList = ({ taskList }: Props) => {//desestruturação da taskList
   return (
-    <div>Lista de tarefas</div>
-  )
-}
+    <>
+      {taskList.length > 0 ? (//checando se existem itens
+        taskList.map((task) => (//cada item é nomeado com 'task'
+          <div key={task.id}>{/*exibe título do item(chamado com a key do identificador único*/}
+            <p>{task.title}</p>
+          </div>
+        ))
+      ) : (
+        <p>Não há tarefas cadastradas</p>
+      )}
+    </>
+  );
+};
 
-export default TaskList
+export default TaskList;
