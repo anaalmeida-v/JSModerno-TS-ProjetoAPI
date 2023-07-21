@@ -15,12 +15,12 @@ const TaskList = ({ taskList }: Props) => {//desestruturação da taskList
     <>
       {taskList.length > 0 ? (//checando se existem itens
         taskList.map((task) => (//cada item é nomeado com 'task'
-          <div key={task.id}>{/*key com identificador único*/}
-            <div>
+          <div key={task.id} className={styles.task}>{/*key com identificador único*/}
+            <div className={styles.details}>
               <h4>{task.title}</h4>{/*título*/}
               <p>Dificuldade: {task.difficulty}</p>
             </div>
-            <div>
+            <div className={styles.actions}>
             <i className="bi bi-pencil"></i>
             <i className="bi bi-trash"></i>
             </div>{/*ícones de edição e exclusão vindos do bootstrap*/}
