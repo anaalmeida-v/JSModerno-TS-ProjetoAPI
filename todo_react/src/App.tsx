@@ -29,7 +29,10 @@ function App() {
 
   return (
     <div>
-      <Modal />
+      <Modal
+        children={<TaskForm btnText="Editar Tarefa" taskList={taskList} />}
+      />
+      {/*component é enviado como propriedade e impresso no Modal de edição*/}
       <Header />
       <main className={styles.main}>
         <div>
