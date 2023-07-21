@@ -44,6 +44,19 @@ function App() {
     setTaskToUpdate(task); //será alterada baseada em quando clicamos em editar task
   };
 
+  const updateTask = (id: number, title: string, difficulty: number) => {
+    //parâmetros necessários para atualizar uma tarefa
+    const updateTask: ITask = { id, title, difficulty };
+
+    const updateItems = taskList.map((task) => {
+      //loop pela taskList - nomeando cada task como 'task'
+      return task.id === updateTask.id ? updateTask : task; //se o id da task atual do loop for igual a do updateTask, se for atualiza a tarefa, se não, continua igual
+    });
+    setTaskList(updateItems); //atualizando listas do componente
+
+    hideOrShowModal(false);
+  };
+
   return (
     <div>
       <Modal
@@ -52,6 +65,7 @@ function App() {
             btnText="Editar Tarefa"
             taskList={taskList}
             task={taskToUpdate} //a partir disso modal pode ser preenchido
+            handleUpdate={updateTask}
           />
         }
       />
