@@ -15,6 +15,17 @@ import { ITask } from "./interfaces/Task";
 function App() {
   const [taskList, setTaskList] = useState<ITask[]>([]); //é um array de ITask e começará com um array vazio
 
+  const deleteTask = (id: number) => {
+    //recebe id do elemento
+    setTaskList(
+      //alterar task
+      taskList.filter((task) => {
+        //fltra lista, onde cada item é nomeado como task
+        return task.id !== id; //retorna elementos que tem id diferente ao que será removido
+      }) //sendo assim ele retorna a lista toda, menos o item que eu quero remover
+    );
+  };
+
   return (
     <div>
       <Header />
@@ -29,7 +40,7 @@ function App() {
         </div>
         <div>
           <h2>Suas tarefas:</h2>
-          <TaskList taskList={taskList} />
+          <TaskList taskList={taskList} handleDelete={deleteTask} />
         </div>
       </main>
       <Footer />
