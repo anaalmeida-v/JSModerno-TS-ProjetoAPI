@@ -9,7 +9,7 @@ import styles from "./TaskList.module.css";
 type Props = {
   taskList: ITask[]; //a taskList é um array de ITask
   handleDelete(id: number): void; //função recebe id do tipo number
-  handleEdit(): void;
+  handleEdit(task: ITask): void;
 }; //void: valor é vazio, nada é atribuído
 
 const TaskList = ({ taskList, handleDelete, handleEdit }: Props) => {
@@ -32,7 +32,7 @@ const TaskList = ({ taskList, handleDelete, handleEdit }: Props) => {
                 <i
                   className="bi bi-pencil"
                   onClick={() => {
-                    handleEdit();
+                    handleEdit(task ); //funcionalidade de edição
                   }}
                 ></i>
                 <i

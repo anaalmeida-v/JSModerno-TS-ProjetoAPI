@@ -15,6 +15,7 @@ import { ITask } from "./interfaces/Task";
 
 function App() {
   const [taskList, setTaskList] = useState<ITask[]>([]); //é um array de ITask e começará com um array vazio
+  const [taskToUpdate, setTaskToUpdate] = useState<ITask | null>(null);
 
   const deleteTask = (id: number) => {
     //recebe id do elemento
@@ -38,14 +39,21 @@ function App() {
     } //adiciona class hide(modal oculto)
   };
 
-  const editTask = (): void => {
+  const editTask = (task: ITask): void => {
     hideOrShowModal(true);
+    setTaskToUpdate(task); //será alterada baseada em quando clicamos em editar task
   };
 
   return (
     <div>
       <Modal
-        children={<TaskForm btnText="Editar Tarefa" taskList={taskList} />}
+        children={
+          <TaskForm
+            btnText="Editar Tarefa"
+            taskList={taskList}
+            task={taskToUpdate} //a partir disso modal pode ser preenchido
+          />
+        }
       />
       {/*component é enviado como propriedade e impresso no Modal de edição*/}
       <Header />

@@ -8,12 +8,23 @@ type Props = {
   btnText: string;
   taskList: ITask[]; //chamando lista
   setTaskList?: React.Dispatch<React.SetStateAction<ITask[]>>; //dispachando um evento(setState) que trabalha com ITask//?-pode ou não vir(opcional)
-};
+  task?: ITask | null//opcional e derivada de ITask - valor pode vir preenchido ou vazio
+}; //? - opcional
 
-const TaskForm = ({ btnText, taskList, setTaskList }: Props) => {
+const TaskForm = ({ btnText, taskList, setTaskList, task }: Props) => {
   const [id, setId] = useState<number>(0); //tipo:number - começa como '0'
   const [title, setTitle] = useState<string>(""); //tipo:string - começa vazio
   const [difficulty, setDifficulty] = useState<number>(0); //dificuldade da tarefa
+
+  useEffect(()=>{//mapeia valor de array de dependência, com isso tem o controle de quando pode ser executado, não tendo um loop infinito
+    
+    if(task){
+      setId(task.id)
+      setTitle(task.title)
+      setDifficulty(task.difficulty)
+    }//quando vier uma task, retorna dados da tarefa
+
+  }, [task])//quando houver uma alteração useEffect é rodado
 
   const addTaskHandler = (e: FormEvent<HTMLFormElement>) => {
     //realiza ação de inclusão de tarefas - envio de submissão do formulário
