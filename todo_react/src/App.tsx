@@ -27,6 +27,21 @@ function App() {
     );
   };
 
+  const hideOrShowModal = (display: boolean) => {
+    //será feito uma condição de true e false(display:boolean) para ativar e desativar modal
+    const modal = document.querySelector("#modal");
+    if (display) {
+      //se display for true, é para exibir modal, logo, hide é removida
+      modal!.classList.remove("hide");
+    } else {
+      modal!.classList.add("hide");
+    } //adiciona class hide(modal oculto)
+  };
+
+  const editTask = (): void => {
+    hideOrShowModal(true);
+  };
+
   return (
     <div>
       <Modal
@@ -45,7 +60,11 @@ function App() {
         </div>
         <div>
           <h2>Suas tarefas:</h2>
-          <TaskList taskList={taskList} handleDelete={deleteTask} />
+          <TaskList
+            taskList={taskList}
+            handleDelete={deleteTask}
+            handleEdit={editTask}
+          />
         </div>
       </main>
       <Footer />

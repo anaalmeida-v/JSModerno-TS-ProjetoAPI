@@ -9,9 +9,10 @@ import styles from "./TaskList.module.css";
 type Props = {
   taskList: ITask[]; //a taskList é um array de ITask
   handleDelete(id: number): void; //função recebe id do tipo number
+  handleEdit(): void;
 }; //void: valor é vazio, nada é atribuído
 
-const TaskList = ({ taskList, handleDelete }: Props) => {
+const TaskList = ({ taskList, handleDelete, handleEdit }: Props) => {
   //desestruturação da taskList
   return (
     <>
@@ -28,13 +29,19 @@ const TaskList = ({ taskList, handleDelete }: Props) => {
                 <p>Dificuldade: {task.difficulty}</p>
               </div>
               <div className={styles.actions}>
-                <i className="bi bi-pencil"></i>
+                <i
+                  className="bi bi-pencil"
+                  onClick={() => {
+                    handleEdit();
+                  }}
+                ></i>
                 <i
                   className="bi bi-trash"
                   onClick={() => {
                     handleDelete(task.id);
                   }}
-                ></i>{/*função não é passada direto para não ser executada assim que a página for carregada, por isso, precisa ser passada por uma arrowfucntion */}
+                ></i>
+                {/*função não é passada direto para não ser executada assim que a página for carregada, por isso, precisa ser passada por uma arrowfucntion */}
               </div>
               {/*ícones de edição e exclusão vindos do bootstrap*/}
             </div>
