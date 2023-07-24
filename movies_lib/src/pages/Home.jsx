@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"; //gerenciar estados dos filmes//para ser feita a chamada da api assim que a página recarregar
 import MovieCard from "../components/MovieCard";
+import './MoviesGrid.css'
 
 //chave e url da api
 const moviesURL = import.meta.env.VITE_API;
