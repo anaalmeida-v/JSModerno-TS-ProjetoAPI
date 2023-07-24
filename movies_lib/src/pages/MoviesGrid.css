@@ -29,14 +29,17 @@
   padding: 1rem;
 }
 
-.movies-container div img {
+.movie-card img {
   max-width: 100%;
 }
 
 .movies-container div img,
-.movies-container div h2,
-.movies-container div img {
+.movies-container div p {
   margin-bottom: 1rem;
+}
+
+.movies-container div h2 {
+  margin-bottom: 1.5rem;
 }
 
 .movies-container div svg {
@@ -50,8 +53,6 @@
   color: #000;
   padding: 1rem 0.5rem;
   text-align: center;
-  align-items: center;
-  transition: 0.4s;
   font-weight: bold;
 }
 
