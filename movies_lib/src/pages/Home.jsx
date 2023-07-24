@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect } from "react"; //gerenciar estados dos filmes//para ser feita a chamada da api assim que a página recarregar
 
 //chave e url da api
 const moviesURL = import.meta.env.VITE_API;
@@ -10,17 +10,16 @@ const Home = () => {
   const getTopRatedMovies = async (url) => {
     const res = await fetch(url);
     const data = await res.json();
-
-    console.log(data);  
+    setTopMovies(data.results); //dados dos filmes
   };
 
   useEffect(() => {
-    const TopRatedUrl = `${moviesURL}top_rated?${apiKey}`;
-
-    getTopRatedMovies(TopRatedUrl);
+    const topRatedUrl = `${moviesURL}top_rated?${apiKey}`;
+    getTopRatedMovies(topRatedUrl);
   }, []);
-
-  return <div>Home</div>;
+  return (
+    <div>{topMovies && topMovies.map((movie) => <p>{movie.title}</p>)}</div>
+  );
 };
 
 export default Home;
