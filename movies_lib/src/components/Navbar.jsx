@@ -1,16 +1,39 @@
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { BiCameraMovie, BiSearchAlt2 } from "react-icons/bi";
-import './Navbar.css'
+import "./Navbar.css";
 
 const Navbar = () => {
+  const [search, setSearch] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = (e) => {
+    e.preventDefault(); //previnir evento
+
+    if (!search) return; //verificando se não há nada no search
+
+    navigate(`/search?q=${search}`); //algo precisa ser enviado na query para que api seja consultada e trazer resultados de busca
+    setSearch("");
+  };
+
   return (
     <nav id="navbar">
       <h2>
-        <Link to="/"><BiCameraMovie />MoviesLib</Link>
+        <Link to="/">
+          <BiCameraMovie />
+          MoviesLib
+        </Link>
       </h2>
-      <form>
-        <input type="text" placeholder="Busque um filme" />
-        <button type="submit"><BiSearchAlt2 /></button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          placeholder="Busque um filme"
+          onChange={(e) => setSearch(e.target.value)}
+          value={search}
+        />
+        <button type="submit">
+          <BiSearchAlt2 />
+        </button>
       </form>
     </nav>
   );
