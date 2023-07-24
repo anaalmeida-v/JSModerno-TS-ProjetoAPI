@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"; //gerenciar estados dos filmes//para ser feita a chamada da api assim que a página recarregar
+import MovieCard from "../components/MovieCard";
 
 //chave e url da api
 const moviesURL = import.meta.env.VITE_API;
@@ -18,7 +19,15 @@ const Home = () => {
     getTopRatedMovies(topRatedUrl);
   }, []);
   return (
-    <div>{topMovies && topMovies.map((movie) => <p>{movie.title}</p>)}</div>
+    <div className="container">
+      <h2 className="title">Melhores filmes:</h2>
+      <div className="movies-container">
+        {topMovies.length === 0 && <p>Carregando...</p>}
+        {topMovies.length > 0 &&
+          topMovies.map((movie) => <MovieCard key={movie.id} movie={movie} />)}{/*key é obrigatória, nela, fica o elemento identificador do dado*/}
+        {/*se topMovies tiver elementos, faz um .map, nomeando cada item de movie*/}
+      </div>
+    </div>
   );
 };
 
